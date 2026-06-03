@@ -1,9 +1,42 @@
+/* Global Styles with Google Fonts Fallback */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
+  :root {
+    --color-bg: 0 0% 0%;
+    --color-fg: 0 0% 100%;
+    --color-accent: 0 100% 60%; /* #FF3B30 approx */
+    --color-border: 0 0% 10%;
+  }
+
   body {
-    @apply bg-background text-foreground font-sans;
+    @apply bg-background text-foreground font-sans antialiased overflow-x-hidden;
+    background-color: #000000;
+  }
+
+  /* Custom Selection */
+  ::selection {
+    @apply bg-accent text-white;
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #000000;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #1a1a1a;
+  }
+}
+
+@layer components {
+  .text-display {
+    @apply font-display uppercase leading-[0.85] tracking-tighter;
   }
 }
