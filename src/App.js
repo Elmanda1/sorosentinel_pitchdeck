@@ -2,6 +2,7 @@ import React from 'react';
 import './styles/globals.css';
 import Hero from './components/Hero';
 import Problem from './components/Problem';
+import Solution from './components/Solution';
 
 function App() {
   return (
@@ -22,18 +23,20 @@ function App() {
       <main className="pl-12">
         <Hero />
         <Problem />
+        <Solution />
         
-        {/* Secondary Content Section - Placeholder for Step 3 */}
-        <section className="p-8 grid grid-cols-12 gap-8 py-24 border-b border-border">
-          <div className="col-span-12 md:col-span-4 border-l border-accent pl-6">
-            <h3 className="text-caption-s text-muted uppercase mb-4">Core Ecosystem</h3>
-            <ul className="space-y-2 font-bold uppercase text-sm tracking-wider">
-              <li>01 / Chaos Proxy CLI</li>
-              <li>02 / Scenario Library</li>
-              <li>03 / GitHub Action</li>
-              <li>04 / JUnit Reporting</li>
-            </ul>
-          </div>
+        {/* Footer / CTA Section */}
+        <section className="p-8 py-24 border-t border-border flex flex-col items-center text-center bg-border/5">
+          <h2 className="text-display-xl uppercase mb-12 leading-none">
+            Ready to<br />
+            <span className="text-accent italic">Audit?</span>
+          </h2>
+          <button className="px-12 py-6 bg-foreground text-background font-bold uppercase tracking-widest hover:bg-accent transition-all duration-500">
+            Get Started on Crates.io
+          </button>
+          <p className="mt-12 text-caption-s text-muted uppercase tracking-widest">
+            SoroSentinel Team / Indonesia Chapter / 2026
+          </p>
         </section>
       </main>
     </div>
