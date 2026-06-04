@@ -27,13 +27,6 @@ const Hero = () => {
 
   return (
     <section className="relative min-h-[90vh] flex flex-col justify-end p-8 border-b border-border">
-      {/* Blueprint Grid Background */}
-      <div className="absolute inset-0 grid grid-cols-12 pointer-events-none opacity-20">
-        {[...Array(12)].map((_, i) => (
-          <div key={i} className="border-r border-border h-full last:border-r-0" />
-        ))}
-      </div>
-
       <motion.div 
         variants={containerVars}
         initial="initial"
@@ -49,27 +42,25 @@ const Hero = () => {
           <div className="overflow-hidden">
             <motion.h1 
               variants={itemVars}
-              className="font-display text-[15vw] leading-[0.85] uppercase tracking-tighter"
+              className="font-display text-7xl md:text-[10vw] leading-[0.85] uppercase tracking-tight"
             >
               Accelerating<br />
-              <span className="text-muted/40">Tomorrow's</span><br />
+              <span className="text-accent italic font-light">Tomorrow's</span><br />
               Ideas.
             </motion.h1>
           </div>
         </div>
 
         <motion.div variants={itemVars} className="flex flex-col md:flex-row justify-between items-end gap-8 pb-12">
-          <p className="max-w-md text-muted text-lg leading-relaxed">
-            We partner with the world's most ambitious brands to create digital 
-            experiences that define new standards. Crafting future-proof identities 
-            from petal to planet.
+          <p className="max-w-xl text-muted text-xl leading-relaxed">
+            Turning blockchain chaos into deterministic tests. SoroSentinel is the resilience layer for Stellar developers, ensuring DApps survive the unpredictable nature of mainnet.
           </p>
           
           <div className="flex gap-4">
-            <button className="px-8 py-4 bg-foreground text-background uppercase text-caption-s font-bold hover:bg-accent transition-colors duration-300">
+            <button className="px-8 py-4 bg-foreground text-background uppercase text-caption-s font-bold hover:bg-accent transition-colors duration-400">
               Explore Work
             </button>
-            <button className="px-8 py-4 border border-border uppercase text-caption-s font-bold hover:bg-foreground hover:text-background transition-all duration-300">
+            <button className="px-8 py-4 border border-border uppercase text-caption-s font-bold hover:bg-foreground hover:text-background transition-all duration-400">
               Get in Touch
             </button>
           </div>

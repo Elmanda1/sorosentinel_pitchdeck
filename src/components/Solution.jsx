@@ -1,13 +1,26 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 
 const Solution = () => {
   const targetRef = useRef(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
   const { scrollYProgress } = useScroll({
     target: targetRef,
+    offset: ["start start", "end end"]
   });
 
   const x = useTransform(scrollYProgress, [0, 1], ["0%", "-75%"]);
+  // Move numbers at 0.5x speed relative to cards (depth effect)
+  // Cards move -75%, so numbers move +37.5% relative to card for net -37.5% (0.5x)
+  const bgX = useTransform(scrollYProgress, [0, 1], ["0%", "37.5%"]);
 
   const features = [
     {
@@ -33,15 +46,8 @@ const Solution = () => {
   ];
 
   return (
-    <section ref={targetRef} className="relative h-[400vh] bg-background">
-      <div className="sticky top-0 h-screen flex flex-col justify-center overflow-hidden">
-        {/* Blueprint Grid Lines */}
-        <div className="absolute inset-0 grid grid-cols-12 pointer-events-none opacity-10">
-          {[...Array(12)].map((_, i) => (
-            <div key={i} className="border-r border-border h-full" />
-          ))}
-        </div>
-
+    <section ref={targetRef} className={`relative ${isMobile ? 'h-auto py-24' : 'h-[400vh]'} bg-background`}>
+      <div className={`${isMobile ? 'relative' : 'sticky top-0 h-screen'} flex flex-col justify-center overflow-hidden`}>
         <div className="max-w-7xl mx-auto w-full px-8 relative z-10 mb-12">
           <header className="flex flex-col md:flex-row justify-between items-start gap-12">
             <div className="max-w-2xl">
@@ -65,12 +71,18 @@ const Solution = () => {
           </header>
         </div>
 
-        <motion.div style={{ x }} className="flex gap-24 px-24">
+        <motion.div 
+          style={isMobile ? {} : { x }} 
+          className={`flex ${isMobile ? 'flex-col gap-32 px-8' : 'gap-24 px-24'}`}
+        >
           {features.map((f) => (
-            <div key={f.id} className="relative w-[80vw] md:w-[600px] shrink-0 group">
-              <div className="absolute -top-24 -left-12 text-[18rem] md:text-[22rem] font-display text-white/5 pointer-events-none select-none">
+            <div key={f.id} className={`relative ${isMobile ? 'w-full' : 'w-[80vw] md:w-[600px]'} shrink-0 group`}>
+              <motion.div 
+                style={isMobile ? {} : { x: bgX }}
+                className="absolute -top-24 -left-12 text-[18rem] md:text-[22rem] font-display text-white/5 pointer-events-none select-none"
+              >
                 {f.id}
-              </div>
+              </motion.div>
               <div className="border border-border p-12 bg-background relative z-10 hover:bg-border/5 transition-colors duration-500">
                 <h4 className="text-4xl md:text-5xl font-display uppercase mb-8 group-hover:text-accent transition-colors leading-tight">
                   {f.title}
@@ -88,7 +100,7 @@ const Solution = () => {
         </motion.div>
 
         {/* Technical Footer */}
-        <div className="max-w-7xl mx-auto w-full px-8 mt-24 grid grid-cols-12 gap-8 items-center opacity-50 relative z-10">
+        <div className={`max-w-7xl mx-auto w-full px-8 ${isMobile ? 'mt-32' : 'mt-24'} grid grid-cols-12 gap-8 items-center opacity-50 relative z-10`}>
           <div className="col-span-12 md:col-span-6">
             <p className="text-caption-s uppercase font-mono tracking-tighter">
               Build v1.0.0-alpha // Architecture: Rust (Hyper/Axum) // Registry: Crates.io

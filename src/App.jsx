@@ -20,7 +20,13 @@ function App() {
         </div>
       </nav>
 
-      <main className="pl-12">
+      <main className="pl-12 relative">
+        {/* Blueprint Grid Lines */}
+        <div className="absolute inset-y-0 left-12 right-0 grid grid-cols-12 pointer-events-none opacity-5">
+          {[...Array(12)].map((_, i) => (
+            <div key={i} className="border-r border-border h-full last:border-r-0" />
+          ))}
+        </div>
         <Hero />
         <Problem />
         <Solution />
