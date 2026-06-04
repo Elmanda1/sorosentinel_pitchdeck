@@ -26,7 +26,7 @@ const Hero = () => {
   };
 
   return (
-    <section className="relative min-h-[90vh] flex flex-col justify-end p-8 border-b border-border">
+    <section className="relative min-h-[90vh] flex flex-col justify-end p-8 pt-32 border-b border-border">
       <motion.div 
         variants={containerVars}
         initial="initial"

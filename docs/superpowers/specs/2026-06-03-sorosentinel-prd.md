@@ -1,4 +1,4 @@
-# SoroSentinel Instawards - Product Requirements Document (PRD)
+    # SoroSentinel Instawards - Product Requirements Document (PRD)
 
 ## 1. Project Overview
 SoroSentinel is an automated chaos engineering tool for Stellar Soroban DApps. It acts as a middleware proxy that simulates real-world blockchain-layer failures, allowing developers to test their application's resilience before mainnet deployment.

@@ -2,11 +2,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
 
 @theme {
-  --color-background: #000000;
+  --color-background: #050102;
   --color-foreground: #FFFFFF;
-  --color-accent: #FF3B30;
+  --color-accent: #550C18;
+  --color-accent-light: #FF4D6D;
   --color-muted: #808080;
-  --color-border: #1A1A1A;
+  --color-border: #1a0508;
 
   --font-display: "Playfair Display", serif;
   --font-sans: "Inter", sans-serif;

@@ -46,7 +46,7 @@ const Solution = () => {
   ];
 
   return (
-    <section ref={targetRef} className={`relative ${isMobile ? 'h-auto py-24' : 'h-[400vh]'} bg-background`}>
+    <section ref={targetRef} className={`relative ${isMobile ? 'h-auto py-24' : 'h-[400vh]'}`}>
       <div className={`${isMobile ? 'relative' : 'sticky top-0 h-screen'} flex flex-col justify-center overflow-hidden`}>
         <div className="max-w-7xl mx-auto w-full px-8 relative z-10 mb-12">
           <header className="flex flex-col md:flex-row justify-between items-start gap-12">

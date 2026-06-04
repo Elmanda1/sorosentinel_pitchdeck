@@ -21,7 +21,7 @@ const Problem = () => {
   ];
 
   return (
-    <section className="bg-background text-foreground py-24 px-8 border-b border-border relative overflow-hidden">
+    <section className="text-foreground py-24 px-8 border-b border-border relative overflow-hidden">
       {/* Decorative vertical line */}
       <div className="absolute left-1/2 top-0 w-[1px] h-full bg-border -translate-x-1/2 opacity-30 hidden md:block" />
 
