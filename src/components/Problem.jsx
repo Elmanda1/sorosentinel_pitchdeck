@@ -29,7 +29,7 @@ const Problem = () => {
         <header className="mb-20 grid grid-cols-12 gap-8">
           <div className="col-span-12 md:col-span-6">
             <h2 className="text-caption-s text-accent uppercase tracking-widest mb-4 flex items-center gap-2 font-bold">
-              / Section 02 / The Problem
+              / Section 01 / The Problem
             </h2>
             <h3 className="text-heading-l uppercase font-display leading-tight max-w-xl">
               Stellar developers are building on <span className="text-muted/50 underline decoration-accent/50 underline-offset-8">borrowed time.</span>

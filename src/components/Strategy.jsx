@@ -45,16 +45,16 @@ const Strategy = () => {
       <div className="max-w-7xl mx-auto grid grid-cols-12 gap-16 items-center">
         <div className="col-span-12 lg:col-span-7">
           <h2 className="text-caption-s text-accent uppercase tracking-[0.3em] font-bold mb-6 flex items-center gap-3">
-            <span className="w-8 h-[1px] bg-accent" /> / Section 07 / Commercial Foundation
+            <span className="w-8 h-[1px] bg-accent" /> / Section 06 / Commercial Foundation
           </h2>
           <h3 className="text-display-xl uppercase font-display leading-[0.85] mb-12">
             Beyond<br />
-            <span className="italic text-muted/30">Open Source.</span>
+            <span className="italic text-muted/50">Open Source.</span>
           </h3>
           
           <div className="space-y-12 max-w-2xl">
             <p className="text-2xl text-muted leading-relaxed">
-              SoroSentinel is built for high-scale enterprise resilience. While the core CLI is open source, our SDK includes a native <span className="text-white underline decoration-accent/40 underline-offset-8">API Token Validation Hook</span> built directly into the engine.
+              SoroSentinel is built for high-scale enterprise resilience. While the core CLI is open source, our SDK includes a native <span className="text-accent underline decoration-accent/60 underline-offset-8">API Token Validation Hook</span> built directly into the engine.
             </p>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
@@ -82,7 +82,7 @@ const Strategy = () => {
 
         <div className="col-span-12 lg:col-span-5 relative">
           <div className="border border-border p-12 relative z-10 bg-background">
-            <p className="text-display-xl absolute -top-12 -right-8 opacity-[0.03] select-none pointer-events-none">B2B</p>
+            <p className="text-display-xl absolute -top-12 -right-8 opacity-[0.05] select-none pointer-events-none">B2B</p>
             <h4 className="text-2xl font-display uppercase mb-6 tracking-tight">The Vision</h4>
             <ul className="space-y-6">
               {[

@@ -9,7 +9,6 @@ import Deliverables from './components/Deliverables';
 import Strategy from './components/Strategy';
 import Background from './components/Background';
 import Navbar from './components/Navbar';
-import Pricing from './components/Pricing';
 import Contact from './components/Contact';
 
 function App() {
@@ -32,7 +31,6 @@ function App() {
         <CodeGlimpse />
         <Deliverables />
         <Strategy />
-        <Pricing />
         <Contact />
 
         {/* Footer / CTA Section - Adjusted contrast for Light Mode */}

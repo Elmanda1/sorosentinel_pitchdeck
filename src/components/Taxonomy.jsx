@@ -32,10 +32,10 @@ const Taxonomy = () => {
   ];
 
   return (
-    <section className="text-foreground py-32 px-8 border-b border-border relative overflow-hidden">
+    <section className="bg-transparent py-32 px-8 border-b border-border relative overflow-hidden">
       <div className="max-w-7xl mx-auto">
         <h2 className="text-caption-s text-accent uppercase tracking-[0.3em] font-bold mb-16 flex items-center gap-3">
-          <span className="w-8 h-[1px] bg-accent" /> / Section 02 / The Taxonomy of Chaos
+          <span className="w-8 h-[1px] bg-accent" /> / Section 03 / The Taxonomy of Chaos
         </h2>
 
         <div className="flex flex-col border-t border-border">
@@ -45,12 +45,12 @@ const Taxonomy = () => {
               onMouseEnter={() => setActiveIndex(index)}
               className="border-b border-border group cursor-pointer relative"
             >
-              <div className="flex flex-col md:flex-row md:items-center justify-between py-12 px-4 transition-all duration-700 group-hover:bg-white/[0.02]">
+              <div className="flex flex-col md:flex-row md:items-center justify-between py-12 px-4 transition-all duration-700 group-hover:bg-accent/[0.01]">
                 <div className="flex items-center gap-12">
-                  <span className={`font-mono text-xl transition-colors duration-500 ${activeIndex === index ? 'text-accent' : 'text-muted/40'}`}>
+                  <span className={`font-mono text-xl transition-colors duration-500 ${activeIndex === index ? 'text-accent' : 'text-muted/60'}`}>
                     {d.id}
                   </span>
-                  <h3 className={`text-4xl md:text-7xl font-display uppercase tracking-tighter transition-all duration-700 ${activeIndex === index ? 'translate-x-4 text-white' : 'text-muted/20'}`}>
+                  <h3 className={`text-4xl md:text-7xl font-display uppercase tracking-tighter transition-all duration-700 ${activeIndex === index ? 'translate-x-4 text-foreground' : 'text-muted/40'}`}>
                     {d.title}
                   </h3>
                 </div>
@@ -95,7 +95,7 @@ const Taxonomy = () => {
       
       {/* Dynamic Background Visual */}
       <div className="absolute top-1/2 right-[-10%] -translate-y-1/2 pointer-events-none select-none opacity-[0.03]">
-        <h4 className="text-[30vw] font-display uppercase leading-none">
+        <h4 className="text-[30vw] font-display uppercase leading-none text-accent">
           {domains[activeIndex].id}
         </h4>
       </div>

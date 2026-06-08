@@ -19,7 +19,6 @@ const Solution = () => {
 
   const x = useTransform(scrollYProgress, [0, 1], ["0%", "-75%"]);
   // Move numbers at 0.5x speed relative to cards (depth effect)
-  // Cards move -75%, so numbers move +37.5% relative to card for net -37.5% (0.5x)
   const bgX = useTransform(scrollYProgress, [0, 1], ["0%", "37.5%"]);
 
   const features = [
@@ -52,11 +51,11 @@ const Solution = () => {
           <header className="flex flex-col md:flex-row justify-between items-start gap-12">
             <div className="max-w-2xl">
               <h2 className="text-caption-s text-accent uppercase tracking-[0.3em] font-bold mb-6 flex items-center gap-3">
-                <span className="w-8 h-[1px] bg-accent" /> / Section 03 / The Fix
+                <span className="w-8 h-[1px] bg-accent" /> / Section 02 / The Fix
               </h2>
-              <h3 className="text-display-xl leading-[0.85] uppercase mb-8">
+              <h3 className="text-display-xl leading-[0.85] uppercase mb-8 text-foreground">
                 Systematic<br />
-                <span className="text-muted/30 italic">Resilience.</span>
+                <span className="text-muted/40 italic">Resilience.</span>
               </h3>
               <p className="text-xl text-muted leading-relaxed">
                 SoroSentinel provides the missing link in the Stellar developer toolchain, 
@@ -65,8 +64,8 @@ const Solution = () => {
             </div>
             
             <div className="bg-accent p-8 md:mt-12 group hover:bg-foreground transition-colors duration-500 cursor-pointer">
-              <p className="text-background text-caption-s font-bold uppercase tracking-widest mb-2 group-hover:text-background transition-colors">Phase 01 Status</p>
-              <p className="text-3xl font-display uppercase group-hover:text-background">Operational</p>
+              <p className="text-background text-caption-s font-bold uppercase tracking-widest mb-2">Phase 01 Status</p>
+              <p className="text-3xl font-display uppercase text-background">Operational</p>
             </div>
           </header>
         </div>
@@ -79,19 +78,19 @@ const Solution = () => {
             <div key={f.id} className={`relative ${isMobile ? 'w-full' : 'w-[80vw] md:w-[600px]'} shrink-0 group`}>
               <motion.div 
                 style={isMobile ? {} : { x: bgX }}
-                className="absolute -top-24 -left-12 text-[18rem] md:text-[22rem] font-display text-white/5 pointer-events-none select-none"
+                className="absolute -top-24 -left-12 text-[18rem] md:text-[22rem] font-display text-accent/[0.03] pointer-events-none select-none"
               >
                 {f.id}
               </motion.div>
-              <div className="border border-border p-12 bg-background relative z-10 hover:bg-border/5 transition-colors duration-500">
-                <h4 className="text-4xl md:text-5xl font-display uppercase mb-8 group-hover:text-accent transition-colors leading-tight">
+              <div className="border border-border p-12 bg-background relative z-10 hover:bg-accent/[0.02] transition-colors duration-500">
+                <h4 className="text-4xl md:text-5xl font-display uppercase mb-8 group-hover:text-accent transition-colors leading-tight text-foreground">
                   {f.title}
                 </h4>
                 <p className="text-xl text-muted leading-relaxed">
                   {f.desc}
                 </p>
                 <div className="mt-12 flex items-center gap-2 group cursor-pointer">
-                  <span className="text-caption-s uppercase font-bold tracking-widest group-hover:text-accent transition-colors">Documentation</span>
+                  <span className="text-caption-s uppercase font-bold tracking-widest text-muted group-hover:text-accent transition-colors">Documentation</span>
                   <div className="h-[1px] w-0 bg-accent group-hover:w-12 transition-all duration-500" />
                 </div>
               </div>
@@ -102,12 +101,12 @@ const Solution = () => {
         {/* Technical Footer */}
         <div className={`max-w-7xl mx-auto w-full px-8 ${isMobile ? 'mt-32' : 'mt-24'} grid grid-cols-12 gap-8 items-center opacity-50 relative z-10`}>
           <div className="col-span-12 md:col-span-6">
-            <p className="text-caption-s uppercase font-mono tracking-tighter">
+            <p className="text-caption-s uppercase font-mono tracking-tighter text-muted">
               Build v1.0.0-alpha // Architecture: Rust (Hyper/Axum) // Registry: Crates.io
             </p>
           </div>
           <div className="col-span-12 md:col-span-6 md:text-right">
-            <p className="text-caption-s uppercase font-mono tracking-tighter">
+            <p className="text-caption-s uppercase font-mono tracking-tighter text-muted">
               Validated on Stellar Testnet // Mainnet Ready Q3 2026
             </p>
           </div>

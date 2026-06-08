@@ -2,12 +2,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
 
 @theme {
-  --color-background: #050102;
-  --color-foreground: #FFFFFF;
+  --color-background: #FDFCFB;
+  --color-foreground: #1A0508;
   --color-accent: #550C18;
   --color-accent-light: #FF4D6D;
-  --color-muted: #808080;
-  --color-border: #1a0508;
+  --color-muted: #6B7280;
+  --color-border: #E5E7EB;
 
   --font-display: "Playfair Display", serif;
   --font-sans: "Inter", sans-serif;
@@ -34,7 +34,7 @@
 
   body {
     @apply bg-background text-foreground font-sans antialiased overflow-x-hidden;
-    background-color: #000000;
+    background-color: #FDFCFB;
   }
 
   /* Custom Selection */
@@ -47,10 +47,10 @@
     width: 6px;
   }
   ::-webkit-scrollbar-track {
-    background: #000000;
+    background: #FDFCFB;
   }
   ::-webkit-scrollbar-thumb {
-    background: #1a1a1a;
+    background: #E5E7EB;
   }
 }
 

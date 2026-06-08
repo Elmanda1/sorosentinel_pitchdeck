@@ -36,7 +36,7 @@ const Deliverables = () => {
           </h2>
           <h3 className="text-display-xl uppercase leading-[0.85] mb-8">
             Battle-Ready<br />
-            <span className="italic text-muted/30">Toolkit.</span>
+            <span className="italic text-muted/50">Toolkit.</span>
           </h3>
           <p className="max-w-2xl text-xl text-muted leading-relaxed">
             From local CLI testing to global cloud orchestration. We deliver a complete ecosystem 
