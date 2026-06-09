@@ -28,8 +28,8 @@ const Deliverables = () => {
   ];
 
   return (
-    <section className="text-foreground py-32 px-8 border-b border-border">
-      <div className="max-w-7xl mx-auto">
+    <section className="text-foreground py-32 border-b border-border">
+      <div className="w-full px-8 md:px-12 lg:px-24">
         <header className="mb-24">
           <h2 className="text-caption-s text-accent uppercase tracking-[0.3em] font-bold mb-6 flex items-center gap-3">
             <span className="w-8 h-[1px] bg-accent" /> / Section 05 / Core Deliverables

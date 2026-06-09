@@ -32,8 +32,8 @@ const Taxonomy = () => {
   ];
 
   return (
-    <section className="bg-transparent py-32 px-8 border-b border-border relative overflow-hidden">
-      <div className="max-w-7xl mx-auto">
+    <section className="bg-transparent py-32 border-b border-border relative overflow-hidden">
+      <div className="w-full px-8 md:px-12 lg:px-24">
         <h2 className="text-caption-s text-accent uppercase tracking-[0.3em] font-bold mb-16 flex items-center gap-3">
           <span className="w-8 h-[1px] bg-accent" /> / Section 03 / The Taxonomy of Chaos
         </h2>
@@ -45,8 +45,9 @@ const Taxonomy = () => {
               onMouseEnter={() => setActiveIndex(index)}
               className="border-b border-border group cursor-pointer relative"
             >
-              <div className="flex flex-col md:flex-row md:items-center justify-between py-12 px-4 transition-all duration-700 group-hover:bg-accent/[0.01]">
-                <div className="flex items-center gap-12">
+              <div className="grid grid-cols-12 gap-8 py-12 px-4 transition-all duration-700 group-hover:bg-accent/[0.01]">
+                {/* Left Side: ID + Title */}
+                <div className="col-span-12 md:col-span-7 flex items-center gap-12">
                   <span className={`font-mono text-xl transition-colors duration-500 ${activeIndex === index ? 'text-accent' : 'text-muted/60'}`}>
                     {d.id}
                   </span>
@@ -55,9 +56,10 @@ const Taxonomy = () => {
                   </h3>
                 </div>
 
-                <div className="flex gap-4 mt-6 md:mt-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700">
+                {/* Right Side: Tags (always visible or hover) */}
+                <div className="col-span-12 md:col-span-5 flex items-center md:justify-end gap-3 flex-wrap">
                   {d.tags.map((tag) => (
-                    <span key={tag} className="px-3 py-1 border border-border text-[10px] uppercase font-mono tracking-widest text-muted">
+                    <span key={tag} className="px-3 py-1 border border-border text-[9px] uppercase font-mono tracking-widest text-muted whitespace-nowrap">
                       {tag}
                     </span>
                   ))}
@@ -73,10 +75,17 @@ const Taxonomy = () => {
                     transition={{ duration: 0.5, ease: [0.23, 1, 0.32, 1] }}
                     className="overflow-hidden"
                   >
-                    <div className="pb-12 px-24 max-w-2xl">
-                      <p className="text-xl text-muted leading-relaxed italic">
-                        "{d.desc}"
-                      </p>
+                    <div className="pb-12 px-4 md:px-0 grid grid-cols-12 gap-8">
+                      {/* Spacer to align with title */}
+                      <div className="hidden md:block md:col-span-1" />
+                      <div className="col-span-12 md:col-span-6 pl-12 md:pl-20">
+                        <p className="text-lg text-muted leading-relaxed">
+                          {d.desc}
+                        </p>
+                      </div>
+                      <div className="col-span-12 md:col-span-5 flex flex-col justify-end items-end opacity-20">
+                        <span className="text-[10px] uppercase font-mono tracking-[0.5em]">SYSTEM_INJECTION_READY</span>
+                      </div>
                     </div>
                   </motion.div>
                 )}

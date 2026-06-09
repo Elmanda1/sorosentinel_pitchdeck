@@ -47,7 +47,7 @@ const Solution = () => {
   return (
     <section ref={targetRef} className={`relative ${isMobile ? 'h-auto py-24' : 'h-[400vh]'}`}>
       <div className={`${isMobile ? 'relative' : 'sticky top-0 h-screen'} flex flex-col justify-center overflow-hidden`}>
-        <div className="max-w-7xl mx-auto w-full px-8 relative z-10 mb-12">
+        <div className="w-full px-8 md:px-12 lg:px-24 relative z-10 mb-12">
           <header className="flex flex-col md:flex-row justify-between items-start gap-12">
             <div className="max-w-2xl">
               <h2 className="text-caption-s text-accent uppercase tracking-[0.3em] font-bold mb-6 flex items-center gap-3">
@@ -99,7 +99,7 @@ const Solution = () => {
         </motion.div>
 
         {/* Technical Footer */}
-        <div className={`max-w-7xl mx-auto w-full px-8 ${isMobile ? 'mt-32' : 'mt-24'} grid grid-cols-12 gap-8 items-center opacity-50 relative z-10`}>
+        <div className={`w-full px-8 md:px-12 lg:px-24 ${isMobile ? 'mt-32' : 'mt-24'} grid grid-cols-12 gap-8 items-center opacity-50 relative z-10`}>
           <div className="col-span-12 md:col-span-6">
             <p className="text-caption-s uppercase font-mono tracking-tighter text-muted">
               Build v1.0.0-alpha // Architecture: Rust (Hyper/Axum) // Registry: Crates.io

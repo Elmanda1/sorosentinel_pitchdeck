@@ -34,17 +34,11 @@ const AdvancedHero = () => {
 
             <div className="flex gap-6 relative z-30">
               <button 
-                onClick={() => scrollToSection('pricing')}
                 className="group relative px-10 py-5 border border-border text-foreground font-bold uppercase text-[10px] tracking-[0.2em] overflow-hidden transition-all duration-700 hover:border-accent"
+                onClick={() => window.open('https://crates.io', '_blank')}
               >
-                <span className="relative z-10">Initialize Audit</span>
+                <span className="relative z-10">Get Started</span>
                 <div className="absolute inset-0 bg-accent/5 translate-y-[101%] group-hover:translate-y-0 transition-transform duration-500" />
-              </button>
-              <button 
-                onClick={() => scrollToSection('contact')}
-                className="px-10 py-5 bg-accent border border-accent/5 text-white font-bold uppercase text-[10px] tracking-[0.2em] hover:bg-foreground transition-all duration-700 shadow-2xl shadow-red-950/20"
-              >
-                View Reports
               </button>
             </div>
           </div>

@@ -1,6 +1,13 @@
 import React, { useRef } from 'react';
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 
+const HUDMarker = ({ label, value }) => (
+  <div className="flex flex-col gap-1">
+    <span className="text-[7px] uppercase tracking-[0.2em] text-muted/40 font-mono">{label}</span>
+    <span className="text-[9px] uppercase tracking-widest text-foreground/60 font-mono">{value}</span>
+  </div>
+);
+
 const CodeGlimpse = () => {
   const containerRef = useRef(null);
 
@@ -11,8 +18,8 @@ const CodeGlimpse = () => {
   const mouseXSpring = useSpring(x);
   const mouseYSpring = useSpring(y);
 
-  const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["10deg", "-10deg"]);
-  const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-10deg", "10deg"]);
+  const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["5deg", "-5deg"]);
+  const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-5deg", "5deg"]);
 
   const handleMouseMove = (e) => {
     const rect = containerRef.current.getBoundingClientRect();
@@ -33,47 +40,35 @@ const CodeGlimpse = () => {
     y.set(0);
   };
 
-  const codeString = `async fn chaos_proxy_handler(req: Request<Body>) -> Result<Response<Body>, StatusCode> {
-    // Intercept RPC traffic
-    let (parts, body) = req.into_parts();
-    
-    // Inject Fault: Latency Spike
-    if scenario.has_latency_spike() {
-        let delay = scenario.get_spike_duration();
-        tokio::time::sleep(Duration::from_millis(delay)).await;
-    }
-    
-    // Forward manipulated traffic to Stellar Node
-    forward_to_stellar_rpc(parts, body).await
-}`;
+  const parameters = [
+    { label: "Temporal Offset", value: "450ms LAG", status: "STABLE_INJECT", progress: 85, color: "bg-accent" },
+    { label: "Byzantine Integrity", value: "SYNC_LOST", status: "CRITICAL_DRIFT", progress: 92, color: "bg-accent" },
+    { label: "Entropy Saturation", value: "15.4% LOSS", status: "OSCILLATING", progress: 35, color: "bg-foreground" },
+    { label: "Protocol Deviation", value: "0x4F2 ERR", status: "DEGRADED", progress: 60, color: "bg-accent" },
+  ];
 
   return (
-    <section className="text-foreground py-32 px-8 border-b border-border relative overflow-hidden">
-      <div className="max-w-7xl mx-auto grid grid-cols-12 gap-16 items-center">
-        <div className="col-span-12 lg:col-span-5">
+    <section className="text-foreground py-32 border-b border-border relative overflow-hidden bg-white/[0.01]">
+      <div className="w-full px-8 md:px-12 lg:px-24 grid grid-cols-12 gap-8 lg:gap-16 items-center">
+        <div className="col-span-12 lg:col-span-5 pr-8">
           <h2 className="text-caption-s text-accent uppercase tracking-[0.3em] font-bold mb-6 flex items-center gap-3">
             <span className="w-8 h-[1px] bg-accent" /> / Section 04 / The Engine
           </h2>
           <h3 className="text-display-xl uppercase font-display leading-tight mb-8">
-            Rust-Powered<br />
-            <span className="italic text-muted/30">Resilience.</span>
+            Engineered<br />
+            <span className="italic text-muted/30">Instability.</span>
           </h3>
-          <p className="text-xl text-muted leading-relaxed mb-8">
-            The core proxy sits at the system layer. By using Rust's zero-cost 
-            abstractions and the Tokio runtime, SoroSentinel ensures high-throughput 
-            fault injection with microsecond precision.
+          <p className="text-lg text-muted leading-relaxed mb-8">
+            The SoroSentinel core is a surgical instrument for chaos. It doesn't just crash systems; 
+            it manipulates time, space, and consensus protocol integrity to find the breaking points 
+            before mainnet does.
           </p>
-          <ul className="space-y-4 text-caption-s uppercase font-mono text-muted mb-12">
-            <li className="flex items-center gap-3">
-              <span className="w-1 h-1 bg-accent" /> Hyper-based HTTP/2 Interception
-            </li>
-            <li className="flex items-center gap-3">
-              <span className="w-1 h-1 bg-accent" /> Low-level Byte Manipulation
-            </li>
-            <li className="flex items-center gap-3">
-              <span className="w-1 h-1 bg-accent" /> Deterministic Chaos Loop
-            </li>
-          </ul>
+          <div className="grid grid-cols-2 gap-8 mb-12">
+            <HUDMarker label="Core Runtime" value="Rust / 1.7x" />
+            <HUDMarker label="Precision" value="Microsecond" />
+            <HUDMarker label="Architecture" value="Low-Level Hook" />
+            <HUDMarker label="Safety" value="Deterministic" />
+          </div>
         </div>
 
         <div className="col-span-12 lg:col-span-7 perspective-1000">
@@ -86,47 +81,129 @@ const CodeGlimpse = () => {
               rotateY,
               transformStyle: "preserve-3d"
             }}
-            initial={{ opacity: 0, scale: 0.9 }}
+            initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="bg-[#050505] border border-border p-6 md:p-8 rounded-sm shadow-2xl relative overflow-hidden group cursor-crosshair"
+            className="bg-background border border-border p-1 md:p-1 rounded-sm shadow-[0_0_50px_rgba(0,0,0,0.5)] relative overflow-hidden group"
           >
-            {/* Terminal Header */}
-            <div className="flex items-center justify-between mb-8 border-b border-border pb-4 opacity-40">
-              <div className="flex gap-2">
-                <div className="w-2 h-2 rounded-full bg-[#ff5f56]" />
-                <div className="w-2 h-2 rounded-full bg-[#ffbd2e]" />
-                <div className="w-2 h-2 rounded-full bg-[#27c93f]" />
+            {/* Inner Dashboard Border */}
+            <div className="border border-border/40 p-6 md:p-12 relative overflow-hidden">
+              
+              {/* Scanline Effect */}
+              <div className="absolute inset-0 pointer-events-none z-20 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.1)_50%),linear-gradient(90deg,rgba(255,0,0,0.02),rgba(0,255,0,0.01),rgba(0,0,255,0.02))] bg-[length:100%_4px,3px_100%] opacity-20" />
+
+              {/* HUD Header */}
+              <div className="flex items-start justify-between mb-16 relative z-10">
+                <div className="flex flex-col gap-2">
+                  <div className="flex items-center gap-4">
+                    <div className="w-2 h-2 bg-accent animate-ping" />
+                    <span className="text-[10px] uppercase font-bold tracking-[0.4em] text-foreground">SoroSentinel Control Unit</span>
+                  </div>
+                  <div className="flex gap-4 opacity-40 italic">
+                    <span className="text-[8px] font-mono uppercase tracking-widest">Sys_Id: SSRN-99-X</span>
+                    <span className="text-[8px] font-mono uppercase tracking-widest">Uptime: 99.999%</span>
+                  </div>
+                </div>
+                
+                <div className="hidden md:flex flex-col items-end gap-1 font-mono text-[8px] text-muted opacity-30">
+                  <span>0x74 0x65 0x73 0x74</span>
+                  <span>0x63 0x68 0x61 0x6f</span>
+                  <span>0x73 0x5f 0x72 0x70</span>
+                </div>
               </div>
-              <span className="text-[10px] uppercase font-mono tracking-widest text-muted">soro_sentinel_proxy.rs</span>
-            </div>
 
-            <pre className="font-mono text-sm md:text-base leading-relaxed overflow-x-auto">
-              <code className="text-muted">
-                {codeString.split('\n').map((line, i) => {
-                  let coloredLine = line
-                    .replace(/(async|fn|let|if|await|Result|Result|StatusCode|Duration)/g, '<span class="text-white">$1</span>')
-                    .replace(/(\/\/.*)/g, '<span class="text-muted/40 italic">$1</span>')
-                    .replace(/(Request|Body|Response)/g, '<span class="text-accent">$1</span>')
-                    .replace(/(tokio|tokio::time|Duration::from_millis)/g, '<span class="text-muted">$1</span>');
-                  
-                  return (
-                    <div key={i} className="flex gap-6 mb-1">
-                      <span className="w-6 text-muted/20 text-right select-none">{i + 1}</span>
-                      <span dangerouslySetInnerHTML={{ __html: coloredLine }} />
+              {/* Simulation Grid */}
+              <div className="grid grid-cols-12 gap-12 relative z-10">
+                <div className="col-span-12 lg:col-span-8 space-y-12">
+                  {parameters.map((param, i) => (
+                    <div key={i} className="group/item">
+                      <div className="flex justify-between items-end mb-4">
+                        <div className="flex flex-col gap-1">
+                          <span className="text-[8px] uppercase tracking-[0.3em] text-muted font-bold group-hover/item:text-accent transition-colors">
+                            {param.label} / 0{i+1}
+                          </span>
+                          <span className="text-3xl font-display uppercase text-foreground leading-none">
+                            {param.value}
+                          </span>
+                        </div>
+                        <div className="text-right flex flex-col items-end gap-2">
+                          <div className="flex gap-1 h-1">
+                            {[...Array(5)].map((_, idx) => (
+                              <div key={idx} className={`w-3 h-full ${idx < (i + 2) ? 'bg-accent' : 'bg-border/20'}`} />
+                            ))}
+                          </div>
+                          <span className="text-[8px] font-mono text-accent uppercase tracking-widest bg-accent/5 px-2 py-1 border border-accent/20">
+                            {param.status}
+                          </span>
+                        </div>
+                      </div>
+                      
+                      {/* Segmented Progress Bar */}
+                      <div className="flex gap-1">
+                        {[...Array(20)].map((_, idx) => (
+                          <motion.div 
+                            key={idx}
+                            initial={{ opacity: 0 }}
+                            whileInView={{ opacity: idx < (param.progress / 5) ? 1 : 0.1 }}
+                            transition={{ delay: (idx * 0.05) + (i * 0.1) }}
+                            className={`h-1 flex-1 ${idx < (param.progress / 5) ? param.color : 'bg-border'}`}
+                          />
+                        ))}
+                      </div>
                     </div>
-                  );
-                })}
-              </code>
-            </pre>
+                  ))}
+                </div>
 
-            {/* Depth elements */}
-            <div style={{ transform: "translateZ(50px)" }} className="absolute -bottom-4 -right-4 text-display-xl opacity-[0.02] pointer-events-none select-none">
-              RUST
+                {/* Internal HUD Sidebar */}
+                <div className="hidden lg:col-span-4 lg:flex flex-col justify-between border-l border-border/20 pl-12 py-2">
+                  <div className="space-y-8">
+                    <div className="flex flex-col gap-3">
+                      <span className="text-[8px] uppercase tracking-[0.4em] text-muted font-bold">Node_Status</span>
+                      <div className="w-full h-24 border border-border/30 bg-accent/[0.02] relative overflow-hidden">
+                        <motion.div 
+                          animate={{ x: ["-100%", "100%"] }}
+                          transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+                          className="absolute inset-0 bg-gradient-to-r from-transparent via-accent/10 to-transparent"
+                        />
+                        <div className="absolute inset-0 flex items-center justify-center font-mono text-[8px] text-accent/40 rotate-90 tracking-[1em]">
+                          SCANNING
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <div className="space-y-4">
+                      <span className="text-[8px] uppercase tracking-[0.4em] text-muted font-bold">Log_Stream</span>
+                      <div className="font-mono text-[7px] text-muted/40 space-y-1">
+                        <p>&gt; INFRA_INIT... [OK]</p>
+                        <p>&gt; HOOK_LOADED: 0x882</p>
+                        <p>&gt; INJECTING_ENTROPY</p>
+                        <p>&gt; PKT_DROPPED: 12%</p>
+                        <p className="text-accent/60">&gt; ALRT: CONSENSUS_LAG</p>
+                        <p>&gt; RECOVERY_READY</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="pt-12 border-t border-border/20">
+                    <div className="flex items-center gap-3">
+                      <div className="w-8 h-8 rounded-full border border-accent/30 flex items-center justify-center">
+                        <div className="w-2 h-2 bg-accent rounded-full animate-pulse" />
+                      </div>
+                      <span className="text-[7px] uppercase tracking-[0.3em] text-muted font-bold">Secure Core Active</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Decorative Corner Elements */}
+              <div className="absolute top-0 left-0 w-8 h-8 border-t border-l border-accent opacity-40" />
+              <div className="absolute bottom-0 right-0 w-8 h-8 border-b border-r border-accent opacity-40" />
             </div>
-            
-            {/* Glow */}
-            <div className="absolute inset-0 bg-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
+
+            {/* Background Branding */}
+            <div style={{ transform: "translateZ(80px)" }} className="absolute -bottom-10 -left-10 text-[180px] font-display opacity-[0.02] pointer-events-none select-none leading-none tracking-tighter">
+              99
+            </div>
           </motion.div>
         </div>
       </div>

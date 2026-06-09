@@ -5,8 +5,6 @@ const Navbar = () => {
   const links = [
     { name: 'Work', href: '#taxonomy' },
     { name: 'Approach', href: '#solution' },
-    { name: 'Services', href: '#strategy' },
-    { name: 'Pricing', href: '#pricing' },
   ];
 
   const scrollToSection = (e, id) => {
@@ -56,15 +54,6 @@ const Navbar = () => {
             className="text-caption-s uppercase tracking-widest text-foreground hover:text-accent transition-colors"
           >
             Join
-          </motion.a>
-          <motion.a 
-            href="#contact" 
-            onClick={(e) => scrollToSection(e, '#contact')}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            className="px-6 py-2 border border-border text-caption-s uppercase tracking-widest text-foreground hover:bg-foreground hover:text-background transition-all duration-500"
-          >
-            Contact
           </motion.a>
         </div>
       </div>

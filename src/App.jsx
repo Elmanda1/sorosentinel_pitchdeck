@@ -6,10 +6,8 @@ import Solution from './components/Solution';
 import Taxonomy from './components/Taxonomy';
 import CodeGlimpse from './components/CodeGlimpse';
 import Deliverables from './components/Deliverables';
-import Strategy from './components/Strategy';
 import Background from './components/Background';
 import Navbar from './components/Navbar';
-import Contact from './components/Contact';
 
 function App() {
   return (
@@ -30,25 +28,6 @@ function App() {
         <Taxonomy />
         <CodeGlimpse />
         <Deliverables />
-        <Strategy />
-        <Contact />
-
-        {/* Footer / CTA Section - Adjusted contrast for Light Mode */}
-        <section className="p-8 py-24 border-t border-border flex flex-col items-center text-center bg-accent/[0.02]">
-          <h2 className="text-display-xl uppercase mb-12 leading-none">
-            Ready to<br />
-            <span className="text-accent italic">Audit?</span>
-          </h2>
-          <button 
-            onClick={() => document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })}
-            className="px-12 py-6 bg-foreground text-background font-bold uppercase tracking-widest hover:bg-accent hover:text-white transition-all duration-500"
-          >
-            Get Started on Crates.io
-          </button>
-          <p className="mt-12 text-caption-s text-muted uppercase tracking-widest">
-            SoroSentinel Team / Indonesia Chapter / 2026
-          </p>
-        </section>
       </main>
     </div>
   );

@@ -25,7 +25,7 @@ const Problem = () => {
       {/* Decorative vertical line */}
       <div className="absolute left-1/2 top-0 w-[1px] h-full bg-border -translate-x-1/2 opacity-30 hidden md:block" />
 
-      <div className="max-w-7xl mx-auto relative z-10">
+      <div className="w-full px-8 md:px-12 lg:px-24 relative z-10">
         <header className="mb-20 grid grid-cols-12 gap-8">
           <div className="col-span-12 md:col-span-6">
             <h2 className="text-caption-s text-accent uppercase tracking-widest mb-4 flex items-center gap-2 font-bold">
@@ -76,11 +76,14 @@ const Problem = () => {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mt-24 pt-12 border-t border-border flex justify-center"
+          className="mt-24 pt-12 border-t border-border grid grid-cols-12"
         >
-          <p className="text-caption-s text-muted uppercase tracking-[0.2em] text-center max-w-2xl">
+          <p className="col-span-12 md:col-span-8 text-caption-s text-muted uppercase tracking-[0.2em]">
             "Developers lack tools to simulate network congestion, RPC drops, and transaction errors in a systematic way."
           </p>
+          <div className="col-span-12 md:col-span-4 flex justify-end">
+            <span className="text-[10px] uppercase font-mono text-muted/40 tracking-widest">Case_Study // SSRN-01</span>
+          </div>
         </motion.div>
       </div>
     </section>
